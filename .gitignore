@@ -1,8 +1,8 @@
-# CMake build directory
-*build*/
+# === DIY ===
 
-# Backup files.
-*~
+*.gitignore
+
+# === end DIY ===
 
 # Prerequisites
 *.d
