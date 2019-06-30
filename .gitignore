@@ -1,3 +1,9 @@
+# === DIY ===
+*.gitignore
+
+# === end DIY ===
+
+
 # CMake build directory
 *build*/
 
