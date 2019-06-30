@@ -19,7 +19,8 @@
 #include "mat.h"
 #include "platform.h"
 
-namespace ncnn {
+namespace ncnn
+{
 
 class Net;
 class ModelBin
@@ -43,12 +44,12 @@ class ModelBinFromStdio : public ModelBin
 {
 public:
     // construct from file
-    ModelBinFromStdio(FILE* binfp);
+    ModelBinFromStdio(FILE *binfp);
 
     virtual Mat load(int w, int type) const;
 
 protected:
-    FILE* binfp;
+    FILE *binfp;
 };
 #endif // NCNN_STDIO
 
@@ -56,24 +57,24 @@ class ModelBinFromMemory : public ModelBin
 {
 public:
     // construct from external memory
-    ModelBinFromMemory(const unsigned char*& mem);
+    ModelBinFromMemory(const unsigned char *&mem);
 
     virtual Mat load(int w, int type) const;
 
 protected:
-    const unsigned char*& mem;
+    const unsigned char *&mem;
 };
 
 class ModelBinFromMatArray : public ModelBin
 {
 public:
     // construct from weight blob array
-    ModelBinFromMatArray(const Mat* weights);
+    ModelBinFromMatArray(const Mat *weights);
 
     virtual Mat load(int w, int type) const;
 
 protected:
-    mutable const Mat* weights;
+    mutable const Mat *weights;
 };
 
 } // namespace ncnn

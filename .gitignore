@@ -1,6 +1,7 @@
 # === DIY ===
 *.gitignore
 *.pyc
+.vscode/
 
 # === end DIY ===
 
