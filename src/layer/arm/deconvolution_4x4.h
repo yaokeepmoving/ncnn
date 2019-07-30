@@ -12,11 +12,7 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-#if __ARM_NEON
-#include <arm_neon.h>
-#endif // __ARM_NEON
-
-static void deconv4x4s1_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _kernel, const Mat& _bias)
+static void deconv4x4s1_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _kernel, const Mat& _bias, const Option& opt)
 {
     int w = bottom_blob.w;
     int h = bottom_blob.h;
@@ -28,7 +24,7 @@ static void deconv4x4s1_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _
     const float* kernel = _kernel;
     const float* bias = _bias;
 
-    #pragma omp parallel for
+    #pragma omp parallel for num_threads(opt.num_threads)
     for (int p=0; p<outch; p++)
     {
         Mat out = top_blob.channel(p);
@@ -185,7 +181,7 @@ static void deconv4x4s1_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _
     }
 }
 
-static void deconv4x4s2_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _kernel, const Mat& _bias)
+static void deconv4x4s2_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _kernel, const Mat& _bias, const Option& opt)
 {
     int w = bottom_blob.w;
     int h = bottom_blob.h;
@@ -197,7 +193,7 @@ static void deconv4x4s2_neon(const Mat& bottom_blob, Mat& top_blob, const Mat& _
     const float* kernel = _kernel;
     const float* bias = _bias;
 
-    #pragma omp parallel for
+    #pragma omp parallel for num_threads(opt.num_threads)
     for (int p=0; p<outch; p++)
     {
         Mat out = top_blob.channel(p);

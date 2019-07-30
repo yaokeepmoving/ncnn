@@ -25,11 +25,12 @@ class Net;
 class ModelBin
 {
 public:
+    virtual ~ModelBin();
     // element type
     // 0 = auto
     // 1 = float32
     // 2 = float16
-    // 3 = uint8
+    // 3 = int8
     // load vec
     virtual Mat load(int w, int type) const = 0;
     // load image
